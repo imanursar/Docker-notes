@@ -1,0 +1,5 @@
+Under db for the database we want the Docker image for Postgres 10.1 and use volumes to tell Compose where the container should be located in our Docker container.
+
+For web we're specifying how the web service will run. First Compose needs to build an image from the current directory and start up the server at 0.0.0.0:8000. We use volumes to tell Compose to store the code in our Docker container at /code/. The ports config lets us map our own port 8000 to the port 8000 in the Docker container. This is the default Django port. And finally depends_on says that we should start the db first before running our web services.
+
+The last section volumes is because Compose has a rule that you must list named volumes in a top-level volumes key.
